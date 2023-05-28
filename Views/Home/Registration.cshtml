@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма регистрации</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2>Регистрация нового пользователя</h2>
+        <form runat="server">
+            <div class="form-group">
+                <label for="login">Логин:</label>
+                <input type="text" class="form-control" id="login" runat="server" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" class="form-control" id="name" runat="server" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" class="form-control" id="password" runat="server" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Повтор пароля:</label>
+                <input type="password" class="form-control" id="confirm-password" runat="server" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" runat="server" required>
+            </div>
+            <div class="form-group">
+                <label for="avatar">Аватар:</label>
+                <input type="file" class="form-control-file" id="avatar" runat="server">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="agree" runat="server">
+                <label class="form-check-label" for="agree">Согласие с правилами сайта</label>
+            </div>
+            <asp:Button ID="btnRegister" runat="server" Text="Зарегистрироваться" CssClass="btn btn-primary" OnClick="btnRegister_Click" />
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

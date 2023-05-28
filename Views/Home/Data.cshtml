@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Data";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Разработка веб-приложений с использованием технологии ASP.NET Core</h1>
+</div>
+<ul>
+    <li>
+        Подключение пакеты NuGet для работы с EntityFramework (MySql)
+        <ol>
+            <li>Microsoft.Ent....Core</li>
+            <li>Microsoft.Ent....Tools</li>
+            <li>Pomelo.Ent....MySQl</li>
+        </ol>
+    </li>
+    <li>
+        Создаем папку Data,в ней класс DataContext (Наследник DbContext)
+    </li>
+    <li>
+        Поскольку контекст данных будет попадать в контейнер служб,
+        его конфигурацией также будет руководить контейнер.Поэтому,в классе
+        обьявляем конструктор с опциями
+        <code>    public DataContext(DbContextOptions options) : base(options) {}</code>
+    </li>
+     <li>
+       Бд на ПланетСкейле 1,поэтому будем разделять таблицы по схемам<br/>
+        <code>
+            protected override void OnModelCreating(ModelBuilder modelBuilder)<br/>
+            {<br />
+            &emsp; modelBuilder.HasDefaultSchema("asp111");<br />
+        }<br/> 
+        </code>
+    </li>
+    <li>
+        идем в Program,указываем подключение и его настройки,
+        главная особенность MySQL сосоит в том,что он не поддерживает 
+        схемы,поэтому группировку
+        тиблиц по схемам заменяем на префиксное именование (названия таблиц
+        начинаются с названия схемы) - <code> (schema, table) => $"{schema}_{table}"</code>
+    </li>
+    <li>
+        Создаем новую папку Data/Entities,в ней описываем класс User,
+        в контексте добавляем свойство Users
+    </li>
+    <li>
+        Создаем миграцию
+    </li>
+</ul>

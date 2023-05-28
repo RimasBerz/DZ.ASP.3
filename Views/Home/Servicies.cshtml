@@ -1,0 +1,85 @@
+﻿@using WebApplication1.Servicies
+@inject IDateService dateService
+@inject TimeService timeService
+@inject DateTimeService dateTimeService
+@{
+    ViewData["Title"] = "Servicies";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Службы и зависимости</h1>
+</div>
+
+<p>
+    SOLID - набор рекомендаций по архитектурной композиции проекта.
+    <b>D</b> (DIP) - принцип инверсии зависимостей
+</p>
+<p>
+    Службы (в ООП) - обьекты глобального типа,доступные из различных
+    частей проекта.В отличие от глобальных переменных службы имеют
+    различные области существования(Scope)
+</p>
+<ul>
+    <li>Традиционно,службы (классы служб) помещаються в отдельную
+        папку
+    </li>
+    <li>Описываются классы служб,их методы
+    </li> В папке Program
+     <li>
+    </li>
+    <li> &commat;inject
+    </li>
+</ul>
+<p>
+    Данные от службы DateService: <b>@ViewData["date"]</b>
+</p>
+<table>
+<thead>
+    ©
+    <tr>
+        <th>Обьект</th>
+        <th>Хеш-код (в контроллере)</th>
+            <th>Хеш-код (в представлении)</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>HomeController</td>
+        <td>@ViewData["ctrl"]</td>
+        <td>----------</td>
+    </tr>
+    <tr>
+        <td>DateService</td>
+        <td>@ViewData["date-hash"]</td>
+         <td>@dateService.GetHashCode()</td>
+    </tr>
+        <tr>
+            <td>TimeService</td>
+            <td>@ViewData["time-hash"]</td>
+             <td>@timeService.GetHashCode()</td>
+        </tr>
+        <tr>
+            <td>DateTimeService</td>
+            <td>@ViewData["datetime-hash"]</td>
+            <td>@dateTimeService.GetHashCode()</td>
+        </tr>
+</tbody>
+</table>
+
+<p> Данные от службы DateService: <b>@ViewData["date"]</b></p>
+<p> Данные от службы TimeService: <b>@ViewData["time"]</b></p>
+<p> Данные от службы DateTimeService: <b>@ViewData["datetime"]</b></p>
+
+@{
+    var results = ViewData["res"] as bool[];
+}
+
+@if (results != null)
+{
+    <ul>
+        @foreach (var result in results)
+        {
+            <li>@result</li>
+        }
+    </ul>
+}
